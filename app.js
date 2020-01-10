@@ -21,10 +21,13 @@ const stories = require('./routes/stories');
 const keys = require('./config/keys');
 
 // Map global promises
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise; //no longer needed
 // Mongoose Connect
 mongoose.connect(keys.mongoURI, {
-  useMongoClient:true
+//  useMongoClient:true //no longer needed
+// new requirements in Mongoose 5:
+useUnifiedTopology: true,
+useNewUrlParser: true
 })
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
